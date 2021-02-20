@@ -2,15 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 .bg-primary {
-  background-color: #292cd8;
+  background-color: #2a0b7d;
 }
 
 .bg-primary-dark {
-  background-color: #0f0291;
+  background-color: #270a73;
+}
+
+.text-muted {
+  color: #8679a7 !important;
+}
+
+.text-white {
+  color: #efefef !important;
 }
 
 body {
-  background-color: #292cd8;
+  background-color: #330d99;
   margin: 0;
   height: 100%;
 }
