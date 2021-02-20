@@ -26,7 +26,6 @@ const getMarks = () => {
 };
 
 function DSlider() {
-  console.log(getMarks());
   return (
     <Slider
       min={0}
