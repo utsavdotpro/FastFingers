@@ -36,6 +36,14 @@
   color: #a798cc !important;
 }
 
+.text-success {
+  color: #06a353 !important;
+}
+
+.text-error {
+  color: #c92823 !important;
+}
+
 .text-white {
   color: #efefef !important;
 }

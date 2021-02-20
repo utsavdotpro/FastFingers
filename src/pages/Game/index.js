@@ -3,13 +3,15 @@ import CardContainer from "../../containers/CardContainer";
 import Input from "../../components/Input";
 import Text from "../../components/Text";
 import Timer from "../../components/Timer";
+import Word from "../../components/Word";
 
 function Game() {
   return (
     <CardContainer>
-      <Text size="4xl" bold="true" align="center" className="tracking-widest">
+      <Word>INCEPTION</Word>
+      {/* <Text size="4xl" bold="true" align="center" className="tracking-widest">
         INCEPTION
-      </Text>
+      </Text> */}
 
       <br />
 
