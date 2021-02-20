@@ -1,9 +1,8 @@
 import React from "react";
 import CardContainer from "../../containers/CardContainer";
 import Input from "../../components/Input";
-import DSlider from "../../components/DSlider";
 import Text from "../../components/Text";
-import { Range } from "rc-slider";
+import Timer from "../../components/Timer";
 
 function Game() {
   return (
@@ -25,12 +24,7 @@ function Game() {
         <Input placeholder="Enter Your Name" />
         <br />
         <br />
-        <Range
-          min={0}
-          max={10}
-          defaultValue={[3, 10]}
-          handleStyle={[{ display: "none" }, { display: "none" }]}
-        />
+        <Timer />
       </div>
     </CardContainer>
   );
