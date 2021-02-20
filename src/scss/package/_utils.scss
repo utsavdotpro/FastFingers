@@ -1,3 +1,10 @@
+.bg-container {
+  background: url("./../assets/images/bg_container.png"), $color-primary-light;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .bg-primary {
   background-color: $color-primary;
 }

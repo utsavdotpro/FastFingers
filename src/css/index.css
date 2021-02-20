@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.bg-container {
+  background: url("./../assets/images/bg_container.png"), #330d99;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .bg-primary {
   background-color: #2a0b7d;
 }
