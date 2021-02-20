@@ -1,22 +1,22 @@
 const { Component } = require("react");
 
-const DIFFICULTIES = [
-  {
+const DIFFICULTIES = {
+  easy: {
     key: "difficulty-easy",
     label: "Easy",
     factor: 1,
   },
-  {
+  medium: {
     key: "difficulty-medium",
     label: "Medium",
     factor: 1.5,
   },
-  {
+  hard: {
     key: "difficulty-hard",
     label: "Hard",
-    factor: 1,
+    factor: 2,
   },
-];
+};
 
 const ROUTES = [
   {
@@ -40,3 +40,5 @@ const ROUTES = [
     Component: "",
   },
 ];
+
+export { DIFFICULTIES };
