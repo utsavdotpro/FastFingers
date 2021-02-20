@@ -12,12 +12,20 @@
   background-color: #2a0b7d;
 }
 
+.bg-primary-light {
+  background-color: #330d99;
+}
+
 .bg-primary-dark {
   background-color: #270a73;
 }
 
+.bg-white {
+  background-color: #efefef;
+}
+
 .text-muted {
-  color: #8679a7 !important;
+  color: #a798cc !important;
 }
 
 .text-white {
