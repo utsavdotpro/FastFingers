@@ -11,8 +11,8 @@ function Letter({ children }) {
 function Word({ children }) {
   return (
     <div>
-      {children.split("").map((l) => (
-        <Letter>{l}</Letter>
+      {children.split("").map((l, index) => (
+        <Letter key={`letter-${index}`}>{l}</Letter>
       ))}
     </div>
   );

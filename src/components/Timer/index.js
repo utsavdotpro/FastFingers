@@ -12,7 +12,7 @@ function Timer() {
       <Range
         min={0}
         max={2000}
-        defaultValue={[300, 1700]}
+        value={[300, 1700]}
         trackStyle={[{ backgroundColor: COLOR.track }]}
         handleStyle={[{ display: "none" }, { display: "none" }]}
         railStyle={{ backgroundColor: COLOR.rail }}
