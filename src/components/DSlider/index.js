@@ -18,7 +18,11 @@ const getMarks = () => {
 
   for (const key in DIFFICULTIES)
     mark[index++] = {
-      style: { color: COLOR.mark, textTransform: "uppercase" },
+      style: {
+        color: COLOR.mark,
+        textTransform: "uppercase",
+        userSelect: "none",
+      },
       label: DIFFICULTIES[key].label,
     };
 

@@ -3,6 +3,7 @@ import Input from "../../components/Input";
 import DSlider from "../../components/DSlider";
 import Text from "../../components/Text";
 import CardContainer from "../../containers/CardContainer";
+import Button from "../../components/Button";
 
 function Home() {
   return (
@@ -26,6 +27,11 @@ function Home() {
         <br />
         <DSlider />
       </div>
+
+      <br />
+      <br />
+
+      <Button brand="success">Start Game</Button>
     </CardContainer>
   );
 }

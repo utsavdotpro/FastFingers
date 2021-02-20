@@ -20,6 +20,14 @@
   background-color: #270a73;
 }
 
+.bg-success {
+  background-color: #06a353;
+}
+
+.bg-error {
+  background-color: #c92823;
+}
+
 .bg-white {
   background-color: #efefef;
 }
@@ -30,6 +38,15 @@
 
 .text-white {
   color: #efefef !important;
+}
+
+.focusable {
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.focusable:hover {
+  opacity: 0.9;
 }
 
 body {
