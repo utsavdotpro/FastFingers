@@ -8,13 +8,13 @@ import Button from "../../components/Button";
 function Home() {
   return (
     <CardContainer>
-      <Text size="4xl" bold="true">
+      <Text size="4xl" bold="true" align="center">
         Hi there!
       </Text>
 
       <br />
 
-      <Text size="xl" color="muted" bold="true">
+      <Text size="xl" color="muted" bold="true" align="center">
         My name is 'awesome', but you can call me
       </Text>
 
