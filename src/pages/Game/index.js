@@ -1,6 +1,6 @@
 import React from "react";
 import CardContainer from "../../containers/CardContainer";
-import Input from "../../components/Input";
+import Input, { useInput } from "../../components/Input";
 import Text from "../../components/Text";
 import Timer from "../../components/Timer";
 import Word from "../../components/Word";
@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 
 export default function Game() {
   const { difficulty: difficultyKey, player } = useParams();
+  const [text, handleTextChange] = useInput("");
 
   return (
     <GridContainer
@@ -35,7 +36,11 @@ export default function Game() {
         <br />
 
         <div className="md:w-3/5 w-full">
-          <Input placeholder="Enter Your Name" />
+          <Input
+            placeholder="Type here!"
+            value={text}
+            onChange={handleTextChange}
+          />
           <br />
           <br />
           <Timer time={3000} />

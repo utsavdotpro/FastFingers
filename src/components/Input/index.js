@@ -8,6 +8,7 @@ function Input({ value = "", placeholder = "", onChange = () => {} }) {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      autoFocus
       className="bg-white p-3 rounded-md outline-none shadow-md font-bold text-center uppercase tracking-wider w-full"
     />
   );
