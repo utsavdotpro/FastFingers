@@ -5,17 +5,17 @@ import Home from "../pages/Home";
 
 const DIFFICULTIES = {
   easy: {
-    key: "difficulty-easy",
+    key: "easy",
     label: "Easy",
     factor: 1,
   },
   medium: {
-    key: "difficulty-medium",
+    key: "medium",
     label: "Medium",
     factor: 1.5,
   },
   hard: {
-    key: "difficulty-hard",
+    key: "hard",
     label: "Hard",
     factor: 2,
   },

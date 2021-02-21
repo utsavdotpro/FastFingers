@@ -1,19 +1,28 @@
 import React from "react";
 import Input, { useInput } from "../../components/Input";
-import DSlider from "../../components/DSlider";
+import DSlider, {
+  useDSlider,
+  getDifficultyForMark,
+} from "../../components/DSlider";
 import Text from "../../components/Text";
 import CardContainer from "../../containers/CardContainer";
 import Button from "../../components/Button";
 import GridContainer from "../../containers/GirdContainer";
 
 import Snackbar, { useSnackbar } from "../../components/Snackbar";
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
+  const history = useHistory();
+
   const [name, handleNameChange] = useInput("");
+  const [difficultyMark, handleDifficultyChange] = useDSlider(0);
   const [isSnackbarShown, showSnackbar] = useSnackbar(2000);
 
   const handleStartGame = () => {
     if (name === "") showSnackbar();
+    else
+      history.push(`/game/${getDifficultyForMark(difficultyMark).key}/${name}`);
   };
 
   return (
@@ -40,7 +49,7 @@ export default function Home() {
           />
           <br />
           <br />
-          <DSlider />
+          <DSlider value={difficultyMark} onChange={handleDifficultyChange} />
         </div>
 
         <br />
