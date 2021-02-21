@@ -9,7 +9,7 @@ import GridContainer from "../../containers/GirdContainer";
 import Snackbar, { useSnackbar } from "../../components/Snackbar";
 
 export default function Home() {
-  const [isSnackbarShown, showSnackbar] = useSnackbar(3000);
+  const [isSnackbarShown, showSnackbar] = useSnackbar(2000);
 
   const handleStartGame = () => {
     showSnackbar();

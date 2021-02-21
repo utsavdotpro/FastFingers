@@ -8,16 +8,13 @@ function useSnackbar(duration, shown = false) {
   useEffect(() => {
     if (isShown) durationTimer.current = setTimeout(hide, duration);
     return clearDurationTimer;
-  }, [isShown]);
+  }, [isShown, duration]);
 
   const clearDurationTimer = () => clearTimeout(durationTimer.current);
 
   const show = () => setIsShown(true);
 
-  const hide = () => {
-    clearDurationTimer();
-    setIsShown(false);
-  };
+  const hide = () => setIsShown(false);
 
   return [isShown, show, hide];
 }
