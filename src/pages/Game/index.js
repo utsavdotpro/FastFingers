@@ -9,6 +9,7 @@ import GridContainer from "../../containers/GirdContainer";
 import Score from "./containers/Score";
 import LeftContainer from "./containers/LeftContainer";
 import RightContainer from "./containers/RightContainer";
+import Snackbar from "../../components/Snackbar";
 
 export default function Game() {
   return (
@@ -33,6 +34,11 @@ export default function Game() {
           <br />
           <Timer />
         </div>
+
+        <Snackbar isShown>
+          Use <b className="text-yellow-400">Left</b>{" "}
+          <b className="text-green-400">Index</b> Finger
+        </Snackbar>
       </CardContainer>
     </GridContainer>
   );
