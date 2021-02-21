@@ -10,7 +10,7 @@ import Score from "./containers/Score";
 import LeftContainer from "./containers/LeftContainer";
 import RightContainer from "./containers/RightContainer";
 
-function Game() {
+export default function Game() {
   return (
     <GridContainer Left={LeftContainer} Right={RightContainer}>
       <CardContainer>
@@ -37,5 +37,3 @@ function Game() {
     </GridContainer>
   );
 }
-
-export default Game;

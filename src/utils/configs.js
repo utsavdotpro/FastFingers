@@ -1,3 +1,5 @@
+import React from "react";
+
 import Game from "../pages/Game";
 import Home from "../pages/Home";
 
@@ -23,12 +25,12 @@ const ROUTES = [
   {
     key: "game",
     path: "/game/:difficulty/:player",
-    Page: Game,
+    Page: <Game />,
   },
   {
     key: "home",
     path: "/",
-    Page: Home,
+    Page: <Home />,
   },
 ];
 

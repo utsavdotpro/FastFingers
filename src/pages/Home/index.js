@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../../components/Input";
 import DSlider from "../../components/DSlider";
 import Text from "../../components/Text";
@@ -6,9 +6,10 @@ import CardContainer from "../../containers/CardContainer";
 import Button from "../../components/Button";
 import GridContainer from "../../containers/GirdContainer";
 import { Link } from "react-router-dom";
-import Snackbar from "../../components/Snackbar";
 
-function Home() {
+import Snackbar, { useSnackbar } from "../../components/Snackbar";
+
+export default function Home() {
   return (
     <GridContainer>
       <CardContainer>
@@ -39,7 +40,7 @@ function Home() {
           <Button brand="success">Start Game</Button>
         </Link>
 
-        <Snackbar>
+        <Snackbar isShown={true}>
           <b className="text-yellow-400">Warning: </b> You have a name, don't
           you?!
         </Snackbar>
@@ -47,5 +48,3 @@ function Home() {
     </GridContainer>
   );
 }
-
-export default Home;
