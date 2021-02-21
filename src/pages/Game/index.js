@@ -6,7 +6,7 @@ import Timer from "../../components/Timer";
 import Word from "../../components/Word";
 import GridContainer from "../../containers/GirdContainer";
 
-import Score from "./components/Score";
+import Score from "./containers/Score";
 
 function Game() {
   return (
