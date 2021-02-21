@@ -1,12 +1,16 @@
 import React from "react";
 
-import DSlider from "../../../../components/DSlider";
+import DSlider, { getMark } from "../../../../components/DSlider";
 
-function RightContainer() {
+function RightContainer({ difficulty, levelFactor = 0 }) {
   return (
     <div className="px-10 pb-10 flex items-center lg:h-screen">
       <div className="h-72">
-        <DSlider vertical included={false} />
+        <DSlider
+          value={getMark(difficulty) + levelFactor}
+          vertical
+          included={false}
+        />
       </div>
     </div>
   );

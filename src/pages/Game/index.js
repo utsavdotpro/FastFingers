@@ -11,15 +11,18 @@ import LeftContainer from "./containers/LeftContainer";
 import RightContainer from "./containers/RightContainer";
 import Snackbar from "../../components/Snackbar";
 import { useParams } from "react-router-dom";
+import { DIFFICULTIES } from "../../utils/configs";
 
 export default function Game() {
   const { difficulty: difficultyKey, player } = useParams();
   const [text, handleTextChange] = useInput("");
 
+  const difficulty = DIFFICULTIES[difficultyKey];
+
   return (
     <GridContainer
       Left={<LeftContainer player={player} />}
-      Right={<RightContainer />}
+      Right={<RightContainer difficulty={difficulty} />}
     >
       <CardContainer>
         <Score>00 : 00</Score>

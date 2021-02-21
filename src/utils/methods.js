@@ -8,4 +8,7 @@ const getReadableScore = (milliseconds) => {
   return "00 : " + seconds + " . " + milliseconds;
 };
 
-export { getReadableScore };
+const getRandomItem = (array) =>
+  array[Math.floor(Math.random() * array.length)];
+
+export { getReadableScore, getRandomItem };
