@@ -8,10 +8,11 @@ import GridContainer from "../../containers/GirdContainer";
 
 import Score from "./containers/Score";
 import LeftContainer from "./containers/LeftContainer";
+import RightContainer from "./containers/RightContainer";
 
 function Game() {
   return (
-    <GridContainer Left={LeftContainer}>
+    <GridContainer Left={LeftContainer} Right={RightContainer}>
       <CardContainer>
         <Score>00 : 00</Score>
 

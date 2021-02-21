@@ -29,13 +29,14 @@ const getMarks = () => {
   return mark;
 };
 
-function DSlider() {
+function DSlider({ vertical = false }) {
   return (
     <Slider
       min={0}
       max={Object.keys(DIFFICULTIES).length - 1}
       defaultValue={0}
       marks={{ ...getMarks() }}
+      vertical={vertical}
       trackStyle={{ backgroundColor: COLOR.track }}
       handleStyle={{ backgroundColor: COLOR.handle }}
       railStyle={{ backgroundColor: COLOR.rail }}
