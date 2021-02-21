@@ -3,6 +3,10 @@ import React from "react";
 import Game from "../pages/Game";
 import Home from "../pages/Home";
 
+import dictionaryEasy from "./../data/easy.json";
+import dictionaryMedium from "./../data/medium.json";
+import dictionaryHard from "./../data/hard.json";
+
 const DIFFICULTIES = {
   easy: {
     key: "easy",
@@ -34,4 +38,10 @@ const ROUTES = [
   },
 ];
 
-export { DIFFICULTIES, ROUTES };
+export {
+  DIFFICULTIES,
+  ROUTES,
+  dictionaryEasy,
+  dictionaryMedium,
+  dictionaryHard,
+};
