@@ -6,7 +6,7 @@ function RightContainer() {
   return (
     <div className="px-10 pb-10 flex items-center lg:h-screen">
       <div className="h-72">
-        <DSlider vertical />
+        <DSlider vertical included={false} />
       </div>
     </div>
   );

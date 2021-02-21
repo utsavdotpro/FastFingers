@@ -29,7 +29,7 @@ const getMarks = () => {
   return mark;
 };
 
-function DSlider({ vertical = false }) {
+function DSlider({ vertical = false, included = true }) {
   return (
     <Slider
       min={0}
@@ -37,6 +37,8 @@ function DSlider({ vertical = false }) {
       defaultValue={0}
       marks={{ ...getMarks() }}
       vertical={vertical}
+      included={included}
+      step={included ? null : 0.02}
       trackStyle={{ backgroundColor: COLOR.track }}
       handleStyle={{ backgroundColor: COLOR.handle }}
       railStyle={{ backgroundColor: COLOR.rail }}
