@@ -11,9 +11,12 @@ function Letter({ children }) {
 function Word({ children }) {
   return (
     <div>
-      {children.split("").map((l, index) => (
-        <Letter key={`letter-${index}`}>{l}</Letter>
-      ))}
+      {children
+        .toUpperCase()
+        .split("")
+        .map((l, index) => (
+          <Letter key={`letter-${index}`}>{l}</Letter>
+        ))}
     </div>
   );
 }

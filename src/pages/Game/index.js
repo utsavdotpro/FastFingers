@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CardContainer from "../../containers/CardContainer";
 import Input, { useInput } from "../../components/Input";
 import Text from "../../components/Text";
@@ -11,13 +11,44 @@ import LeftContainer from "./containers/LeftContainer";
 import RightContainer from "./containers/RightContainer";
 import Snackbar from "../../components/Snackbar";
 import { useParams } from "react-router-dom";
-import { DIFFICULTIES } from "../../utils/configs";
+import {
+  dictionaryEasy,
+  dictionaryHard,
+  dictionaryMedium,
+  DIFFICULTIES,
+} from "../../utils/configs";
+import { getRandomItem } from "../../utils/methods";
 
 export default function Game() {
   const { difficulty: difficultyKey, player } = useParams();
   const [text, handleTextChange] = useInput("");
 
-  const difficulty = DIFFICULTIES[difficultyKey];
+  const dictionary = useRef([]);
+
+  const [difficulty, setDifficulty] = useState(DIFFICULTIES[difficultyKey]);
+
+  const [levelFactor, setLevelFactor] = useState(0);
+
+  const [word, setWord] = useState("");
+
+  const setDictionary = () => {
+    switch (difficulty.key) {
+      case "easy":
+        dictionary.current = dictionaryEasy;
+        break;
+      case "medium":
+        dictionary.current = dictionaryMedium;
+        break;
+      case "hard":
+        dictionary.current = dictionaryHard;
+        break;
+      default:
+    }
+  };
+
+  useEffect(setDictionary, [difficulty]);
+
+  useEffect(() => setWord(getRandomItem(dictionary.current)), [levelFactor]);
 
   return (
     <GridContainer
@@ -27,7 +58,7 @@ export default function Game() {
       <CardContainer>
         <Score>00 : 00</Score>
 
-        <Word>INCEPTION</Word>
+        <Word>{word}</Word>
 
         <br />
 
