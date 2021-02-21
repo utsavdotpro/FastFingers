@@ -5,11 +5,16 @@ import Text from "../../components/Text";
 import CardContainer from "../../containers/CardContainer";
 import Button from "../../components/Button";
 import GridContainer from "../../containers/GirdContainer";
-import { Link } from "react-router-dom";
 
 import Snackbar, { useSnackbar } from "../../components/Snackbar";
 
 export default function Home() {
+  const [isSnackbarShown, showSnackbar] = useSnackbar(3000);
+
+  const handleStartGame = () => {
+    showSnackbar();
+  };
+
   return (
     <GridContainer>
       <CardContainer>
@@ -36,11 +41,11 @@ export default function Home() {
         <br />
         <br />
 
-        <Link to="/game">
-          <Button brand="success">Start Game</Button>
-        </Link>
+        <Button brand="success" onClick={handleStartGame}>
+          Start Game
+        </Button>
 
-        <Snackbar isShown={true}>
+        <Snackbar isShown={isSnackbarShown}>
           <b className="text-yellow-400">Warning: </b> You have a name, don't
           you?!
         </Snackbar>
