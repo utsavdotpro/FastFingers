@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Input from "../../components/Input";
+import Input, { useInput } from "../../components/Input";
 import DSlider from "../../components/DSlider";
 import Text from "../../components/Text";
 import CardContainer from "../../containers/CardContainer";
@@ -9,10 +9,11 @@ import GridContainer from "../../containers/GirdContainer";
 import Snackbar, { useSnackbar } from "../../components/Snackbar";
 
 export default function Home() {
+  const [name, handleNameChange] = useInput("");
   const [isSnackbarShown, showSnackbar] = useSnackbar(2000);
 
   const handleStartGame = () => {
-    showSnackbar();
+    if (name === "") showSnackbar();
   };
 
   return (
@@ -32,7 +33,11 @@ export default function Home() {
         <br />
 
         <div className="md:w-3/5 w-full">
-          <Input placeholder="Enter Your Name" />
+          <Input
+            value={name}
+            onChange={handleNameChange}
+            placeholder="Enter Your Name"
+          />
           <br />
           <br />
           <DSlider />
