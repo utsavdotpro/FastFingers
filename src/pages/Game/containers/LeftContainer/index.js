@@ -7,7 +7,7 @@ import imgUser from "./../../../../assets/images/defaultUser.png";
 
 function LeftContainer() {
   return (
-    <div className="pl-10 py-10">
+    <div className="lg:pr-0 p-10 pb-0">
       <div className="rounded-xl bg-primary p-5 flex items-center flex-col justify-center">
         <img src={imgUser} alt="" className="w-16 h-16 object-cover" />
         <Text size="lg" align="center" bold className="my-4">

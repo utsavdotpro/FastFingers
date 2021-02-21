@@ -4,7 +4,7 @@ import DSlider from "../../../../components/DSlider";
 
 function RightContainer() {
   return (
-    <div className="p-10 flex items-center h-screen">
+    <div className="px-10 pb-10 flex items-center lg:h-screen">
       <div className="h-72">
         <DSlider vertical />
       </div>
