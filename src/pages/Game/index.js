@@ -38,7 +38,7 @@ export default function Game() {
           <Input placeholder="Enter Your Name" />
           <br />
           <br />
-          <Timer />
+          <Timer time={3000} />
         </div>
 
         <Snackbar isShown>
