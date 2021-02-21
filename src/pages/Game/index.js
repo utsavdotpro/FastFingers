@@ -6,10 +6,14 @@ import Timer from "../../components/Timer";
 import Word from "../../components/Word";
 import GridContainer from "../../containers/GirdContainer";
 
+import Score from "./components/Score";
+
 function Game() {
   return (
     <GridContainer>
       <CardContainer>
+        <Score>00 : 00</Score>
+
         <Word>INCEPTION</Word>
 
         <br />
