@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { useInput } from "./hooks";
 
 function Input({ value = "", placeholder = "", onChange = () => {} }) {

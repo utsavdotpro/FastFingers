@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Input, { useInput } from "../../components/Input";
 import DSlider from "../../components/DSlider";
 import Text from "../../components/Text";
