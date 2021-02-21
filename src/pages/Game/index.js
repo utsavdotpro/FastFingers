@@ -10,10 +10,16 @@ import Score from "./containers/Score";
 import LeftContainer from "./containers/LeftContainer";
 import RightContainer from "./containers/RightContainer";
 import Snackbar from "../../components/Snackbar";
+import { useParams } from "react-router-dom";
 
 export default function Game() {
+  const { difficulty: difficultyKey, player } = useParams();
+
   return (
-    <GridContainer Left={LeftContainer} Right={RightContainer}>
+    <GridContainer
+      Left={<LeftContainer player={player} />}
+      Right={<RightContainer />}
+    >
       <CardContainer>
         <Score>00 : 00</Score>
 
