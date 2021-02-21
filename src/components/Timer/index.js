@@ -4,7 +4,7 @@ import Text from "../Text";
 
 const COLOR = {
   track: "#f3b713",
-  rail: "#efefef",
+  rail: "#2a0b7d",
 };
 
 function Timer() {
