@@ -1,12 +1,18 @@
-import Game from "./pages/Game";
-import Home from "./pages/Home";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
+
+import { ROUTES } from "./utils/configs";
 
 function App() {
   return (
-    // <div className="container max-w-screen-lg m-auto p-10 h-screen flex items-center">
-    <Home />
-    // <Game />
-    // </div>
+    <BrowserRouter>
+      <Switch>
+        {ROUTES.map((route) => (
+          <Route key={route.key} path={route.path}>
+            {route.Page}
+          </Route>
+        ))}
+      </Switch>
+    </BrowserRouter>
   );
 }
 

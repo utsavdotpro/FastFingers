@@ -5,6 +5,7 @@ import Text from "../../components/Text";
 import CardContainer from "../../containers/CardContainer";
 import Button from "../../components/Button";
 import GridContainer from "../../containers/GirdContainer";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -33,7 +34,9 @@ function Home() {
         <br />
         <br />
 
-        <Button brand="success">Start Game</Button>
+        <Link to="/game">
+          <Button brand="success">Start Game</Button>
+        </Link>
       </CardContainer>
     </GridContainer>
   );

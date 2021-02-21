@@ -1,4 +1,5 @@
-const { Component } = require("react");
+import Game from "../pages/Game";
+import Home from "../pages/Home";
 
 const DIFFICULTIES = {
   easy: {
@@ -20,25 +21,15 @@ const DIFFICULTIES = {
 
 const ROUTES = [
   {
+    key: "game",
+    path: "/game/:difficulty/:player",
+    Page: Game,
+  },
+  {
     key: "home",
     path: "/",
-    Component: "",
-  },
-  {
-    key: "game",
-    path: "/game",
-    Component: "",
-  },
-  {
-    key: "profile",
-    path: "/profile",
-    Component: "",
-  },
-  {
-    key: "scores",
-    path: "/scores",
-    Component: "",
+    Page: Home,
   },
 ];
 
-export { DIFFICULTIES };
+export { DIFFICULTIES, ROUTES };
