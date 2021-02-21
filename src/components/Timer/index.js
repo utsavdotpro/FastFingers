@@ -1,5 +1,6 @@
 import { Range } from "rc-slider";
 import React from "react";
+import Text from "../Text";
 
 const COLOR = {
   track: "#f3b713",
@@ -17,6 +18,9 @@ function Timer() {
         handleStyle={[{ display: "none" }, { display: "none" }]}
         railStyle={{ backgroundColor: COLOR.rail }}
       />
+      <Text color="muted" align="center" className="mt-2" bold>
+        00 : 00 : 00
+      </Text>
     </div>
   );
 }
