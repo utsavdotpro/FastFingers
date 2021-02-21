@@ -7,10 +7,11 @@ import Word from "../../components/Word";
 import GridContainer from "../../containers/GirdContainer";
 
 import Score from "./containers/Score";
+import LeftContainer from "./containers/LeftContainer";
 
 function Game() {
   return (
-    <GridContainer>
+    <GridContainer Left={LeftContainer}>
       <CardContainer>
         <Score>00 : 00</Score>
 
