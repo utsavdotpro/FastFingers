@@ -6,6 +6,7 @@ import CardContainer from "../../containers/CardContainer";
 import Button from "../../components/Button";
 import GridContainer from "../../containers/GirdContainer";
 import { Link } from "react-router-dom";
+import Snackbar from "../../components/Snackbar";
 
 function Home() {
   return (
@@ -37,6 +38,11 @@ function Home() {
         <Link to="/game">
           <Button brand="success">Start Game</Button>
         </Link>
+
+        <Snackbar>
+          <b className="text-yellow-400">Warning: </b> You have a name, don't
+          you?!
+        </Snackbar>
       </CardContainer>
     </GridContainer>
   );
