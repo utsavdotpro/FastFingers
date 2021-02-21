@@ -18,37 +18,21 @@ import {
   DIFFICULTIES,
 } from "../../utils/configs";
 import { getRandomItem } from "../../utils/methods";
+import { useDictionary } from "./hooks";
 
 export default function Game() {
   const { difficulty: difficultyKey, player } = useParams();
   const [text, handleTextChange] = useInput("");
 
-  const dictionary = useRef([]);
-
-  const [difficulty, setDifficulty] = useState(DIFFICULTIES[difficultyKey]);
+  const { getWord, difficulty, setDifficulty } = useDictionary(
+    DIFFICULTIES[difficultyKey]
+  );
 
   const [levelFactor, setLevelFactor] = useState(0);
 
   const [word, setWord] = useState("");
 
-  const setDictionary = () => {
-    switch (difficulty.key) {
-      case "easy":
-        dictionary.current = dictionaryEasy;
-        break;
-      case "medium":
-        dictionary.current = dictionaryMedium;
-        break;
-      case "hard":
-        dictionary.current = dictionaryHard;
-        break;
-      default:
-    }
-  };
-
-  useEffect(setDictionary, [difficulty]);
-
-  useEffect(() => setWord(getRandomItem(dictionary.current)), [levelFactor]);
+  useEffect(() => setWord(getWord()), [levelFactor]);
 
   return (
     <GridContainer
