@@ -29,7 +29,7 @@ function useDictionary(defaultDifficulty) {
 
   const getWord = () => getRandomItem(dictionary.current);
 
-  return { getWord, difficulty, setDifficulty };
+  return { getWord, setDifficulty };
 }
 
 export { useDictionary };
