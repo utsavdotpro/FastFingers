@@ -19,6 +19,12 @@ export default function Game() {
 
   const [startScore, pauseScore, stopScore, getScore] = useScore(true);
 
+  const handleGameStart = () => {};
+
+  const handleGamePause = () => {};
+
+  const handleGameEnd = () => {};
+
   return (
     <GridContainer
       Left={<LeftContainer player={player} />}
