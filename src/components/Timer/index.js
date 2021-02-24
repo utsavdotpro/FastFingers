@@ -9,22 +9,20 @@ const COLOR = {
   rail: "#2a0b7d",
 };
 
-function Timer({ time, onTimerEndListener = null }) {
-  const { tick, start, restart, stop } = useTimer(false);
+function Timer({ time, levelFactor, onTimerEndListener = null }) {
+  const { tick, restart, pause } = useTimer(false);
 
   useEffect(() => {
-    if (tick >= time) onTimerEnd();
+    if (time !== 0 && tick >= time) onTimerEnd();
   }, [tick]);
 
-  useEffect(() => restart(), [time]);
+  useEffect(restart, [levelFactor]);
 
   const onTimerEnd = () => {
-    stop();
+    pause();
 
     if (onTimerEndListener) onTimerEndListener();
   };
-
-  console.log("Timer: " + time);
 
   return (
     <div>

@@ -87,7 +87,11 @@ function PlayContainer({
         />
         <br />
         <br />
-        <Timer time={time} onTimerEndListener={onWordFailed} />
+        <Timer
+          time={time}
+          levelFactor={levelFactor}
+          onTimerEndListener={onWordFailed}
+        />
       </div>
     </>
   );

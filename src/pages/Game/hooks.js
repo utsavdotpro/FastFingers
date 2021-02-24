@@ -36,8 +36,7 @@ function useDictionary(defaultDifficulty) {
 
 // - Timer - //
 
-function useTimer(defaultStarted = true) {
-  const [started, setStarted] = useState(defaultStarted);
+function useTimer(started = true) {
   const [tick, setTick] = useState(0);
 
   const timer = useRef(null);
@@ -45,17 +44,15 @@ function useTimer(defaultStarted = true) {
   const clearTimer = () => clearInterval(timer.current);
 
   useEffect(() => {
-    if (started) timer.current = setInterval(onTick, 10);
-    else clearTimer();
-
+    if (started) start();
     return clearTimer;
   }, [started]);
 
-  const onTick = () => setTick((tick) => tick + 10);
+  const start = () => {
+    timer.current = setInterval(() => setTick((tick) => tick + 10), 10);
+  };
 
-  const start = () => setStarted(true);
-
-  const pause = () => setStarted(false);
+  const pause = () => clearTimer();
 
   const restart = () => {
     stop();
@@ -63,11 +60,11 @@ function useTimer(defaultStarted = true) {
   };
 
   const stop = () => {
-    pause();
     setTick(0);
+    clearTimer();
   };
 
-  return { tick, start, restart, pause, stop, onTick, clearTimer };
+  return { tick, start, restart, pause, stop };
 }
 
 export { useDictionary, useTimer };
