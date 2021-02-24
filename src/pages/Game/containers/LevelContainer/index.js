@@ -2,10 +2,10 @@ import React from "react";
 
 import DSlider from "../../../../components/DSlider";
 
-function RightContainer({ difficulty, levelFactor = 0 }) {
+function LevelContainer({ difficulty, levelFactor = 0 }) {
   // Todo: see why it's not rendering immediately
   // console.log(
-  //   "RightContainer (" + difficulty.key + "): ",
+  //   "LevelContainer (" + difficulty.key + "): ",
   //   difficulty.factor + " " + levelFactor
   // );
 
@@ -22,4 +22,4 @@ function RightContainer({ difficulty, levelFactor = 0 }) {
   );
 }
 
-export default RightContainer;
+export default LevelContainer;

@@ -3,8 +3,8 @@ import CardContainer from "../../containers/CardContainer";
 import GridContainer from "../../containers/GirdContainer";
 
 import Score from "./components/Score";
-import LeftContainer from "./containers/LeftContainer";
-import RightContainer from "./containers/RightContainer";
+import ProfileContainer from "./containers/ProfileContainer";
+import LevelContainer from "./containers/LevelContainer";
 import { useParams } from "react-router-dom";
 import { DIFFICULTIES, UNIT_LEVEL_FACTOR } from "../../utils/configs";
 import { getDifficultyBasedOnLevelFactor } from "../../utils/methods";
@@ -46,9 +46,9 @@ export default function Game() {
 
   return (
     <GridContainer
-      Left={<LeftContainer player={player} />}
+      Left={<ProfileContainer player={player} />}
       Right={
-        <RightContainer difficulty={difficulty} levelFactor={levelFactor} />
+        <LevelContainer difficulty={difficulty} levelFactor={levelFactor} />
       }
     >
       <CardContainer>

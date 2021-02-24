@@ -40,7 +40,7 @@ const ROUTES = [
 
 const MIN_TIME_COUNTER = 2;
 
-const UNIT_LEVEL_FACTOR = 0.1;
+const UNIT_LEVEL_FACTOR = 0.01;
 
 export {
   DIFFICULTIES,
