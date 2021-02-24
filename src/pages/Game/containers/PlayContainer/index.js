@@ -72,11 +72,6 @@ function PlayContainer({
     if (onWordFailedListener) onWordFailedListener();
   };
 
-  console.log(
-    "rendering...: ",
-    word.length + " " + difficulty.factor + " " + levelFactor
-  );
-
   return (
     <>
       <Word>{word}</Word>

@@ -57,12 +57,17 @@ function useTimer(defaultStarted = true) {
 
   const pause = () => setStarted(false);
 
+  const restart = () => {
+    stop();
+    start();
+  };
+
   const stop = () => {
-    setStarted(false);
+    pause();
     setTick(0);
   };
 
-  return { tick, start, pause, stop, onTick, clearTimer };
+  return { tick, start, restart, pause, stop, onTick, clearTimer };
 }
 
 export { useDictionary, useTimer };

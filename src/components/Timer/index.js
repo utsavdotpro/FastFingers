@@ -10,17 +10,21 @@ const COLOR = {
 };
 
 function Timer({ time, onTimerEndListener = null }) {
-  const { tick, start, pause } = useTimer(true);
+  const { tick, start, restart, stop } = useTimer(false);
 
   useEffect(() => {
     if (tick >= time) onTimerEnd();
   }, [tick]);
 
+  useEffect(() => restart(), [time]);
+
   const onTimerEnd = () => {
-    pause();
+    stop();
 
     if (onTimerEndListener) onTimerEndListener();
   };
+
+  console.log("Timer: " + time);
 
   return (
     <div>

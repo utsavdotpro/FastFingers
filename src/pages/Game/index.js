@@ -29,8 +29,6 @@ export default function Game() {
     setScoreStarted(false);
   };
 
-  console.log("game rendered: ", levelFactor);
-
   return (
     <GridContainer
       Left={<LeftContainer player={player} />}
