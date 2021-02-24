@@ -19,4 +19,4 @@ const getTimeForWord = (length, factor) => {
   return Math.max(Math.ceil(length / factor), MIN_TIME_COUNTER);
 };
 
-export { getReadableScore, getRandomItem };
+export { getReadableScore, getRandomItem, getTimeForWord };

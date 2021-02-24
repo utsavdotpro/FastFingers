@@ -4,8 +4,11 @@ import Timer from "../../../../components/Timer";
 import Word from "../../../../components/Word";
 import { useDictionary } from "../../hooks";
 
+import { getTimeForWord } from "./../../../../utils/methods";
+
 const ACTIONS = {
   UPDATE_WORD: "UPDATE_WORD",
+  UPDATE_TIME: "UPDATE_TIME",
   UPDATE_DIFFICULTY: "UPDATE_DIFFICULTY",
 };
 
@@ -13,6 +16,8 @@ const reducer = (state, { type, data = "" }) => {
   switch (type) {
     case ACTIONS.UPDATE_WORD:
       return { ...state, word: data };
+    case ACTIONS.UPDATE_TIME:
+      return { ...state, time: data };
 
     default:
       return state;
@@ -25,8 +30,9 @@ function PlayContainer({
   onWordCompleteListener = null,
   onWordFailedListener = null,
 }) {
-  const [{ word }, dispatch] = useReducer(reducer, {
+  const [{ word, time }, dispatch] = useReducer(reducer, {
     word: "",
+    time: 0,
   });
 
   const [text, setText] = useState("");
@@ -43,13 +49,21 @@ function PlayContainer({
 
   const { getWord, setDifficulty } = useDictionary(difficulty);
 
-  useEffect(() => dispatch({ type: ACTIONS.UPDATE_WORD, data: getWord() }), [
-    levelFactor,
-  ]);
+  const processLoadWord = () => {
+    const tempWord = getWord();
+    dispatch({ type: ACTIONS.UPDATE_WORD, data: tempWord });
+    dispatch({
+      type: ACTIONS.UPDATE_TIME,
+      data:
+        getTimeForWord(tempWord.length, difficulty.factor + levelFactor) * 1000,
+    });
+  };
+
+  useEffect(processLoadWord, [levelFactor]);
 
   const onWordComplete = () => {
     setText("");
-    dispatch({ type: ACTIONS.UPDATE_WORD, data: getWord() });
+    processLoadWord();
 
     if (onWordCompleteListener) onWordCompleteListener();
   };
@@ -58,7 +72,10 @@ function PlayContainer({
     if (onWordFailedListener) onWordFailedListener();
   };
 
-  console.log("rendering...: ", levelFactor);
+  console.log(
+    "rendering...: ",
+    word.length + " " + difficulty.factor + " " + levelFactor
+  );
 
   return (
     <>
@@ -75,7 +92,7 @@ function PlayContainer({
         />
         <br />
         <br />
-        <Timer time={3000} onTimerEndListener={onWordFailed} />
+        <Timer time={time} onTimerEndListener={onWordFailed} />
       </div>
     </>
   );
