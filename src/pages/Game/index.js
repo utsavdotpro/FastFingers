@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CardContainer from "../../containers/CardContainer";
 import GridContainer from "../../containers/GirdContainer";
 
@@ -6,10 +6,8 @@ import Score from "./components/Score";
 import LeftContainer from "./containers/LeftContainer";
 import RightContainer from "./containers/RightContainer";
 import { useParams } from "react-router-dom";
-import { DIFFICULTIES } from "../../utils/configs";
+import { DIFFICULTIES, UNIT_LEVEL_FACTOR } from "../../utils/configs";
 import PlayContainer from "./containers/PlayContainer";
-
-const UNIT_LEVEL_FACTOR = 0.01;
 
 export default function Game() {
   const { difficulty: difficultyKey, player } = useParams();
@@ -20,9 +18,8 @@ export default function Game() {
 
   const [scoreStarted, setScoreStarted] = useState(true);
 
-  const handleWordComplete = () => {
+  const handleWordComplete = () =>
     setLevelFactor(levelFactor + UNIT_LEVEL_FACTOR);
-  };
 
   const handleWordFailure = () => onGameEnd();
 
@@ -44,12 +41,16 @@ export default function Game() {
       <CardContainer>
         <Score started={scoreStarted} />
 
+        {/* {scoreStarted ? ( */}
         <PlayContainer
           difficulty={difficulty}
           levelFactor={levelFactor}
           onWordCompleteListener={handleWordComplete}
           onWordFailedListener={handleWordFailure}
         />
+        {/* ) : (
+        <OverContainer />
+        )} */}
       </CardContainer>
     </GridContainer>
   );

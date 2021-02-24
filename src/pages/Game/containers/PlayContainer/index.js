@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Input, { useInput } from "../../../../components/Input";
+import Input from "../../../../components/Input";
 import Timer from "../../../../components/Timer";
 import Word from "../../../../components/Word";
 import { useDictionary } from "../../hooks";

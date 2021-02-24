@@ -1,3 +1,5 @@
+import { MIN_TIME_COUNTER } from "./configs";
+
 const getReadableScore = (milliseconds) => {
   let seconds = "" + Math.floor(milliseconds / 1000);
   milliseconds = "" + Math.floor(milliseconds % 1000);
@@ -11,6 +13,10 @@ const getReadableScore = (milliseconds) => {
 const getRandomItem = (array) => {
   if (array.length <= 0) return "";
   return array[Math.floor(Math.random() * array.length)];
+};
+
+const getTimeForWord = (length, factor) => {
+  return Math.max(Math.ceil(length / factor), MIN_TIME_COUNTER);
 };
 
 export { getReadableScore, getRandomItem };

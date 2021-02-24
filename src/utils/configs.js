@@ -38,9 +38,15 @@ const ROUTES = [
   },
 ];
 
+const MIN_TIME_COUNTER = 2;
+
+const UNIT_LEVEL_FACTOR = 0.01;
+
 export {
   DIFFICULTIES,
   ROUTES,
+  MIN_TIME_COUNTER,
+  UNIT_LEVEL_FACTOR,
   dictionaryEasy,
   dictionaryMedium,
   dictionaryHard,
