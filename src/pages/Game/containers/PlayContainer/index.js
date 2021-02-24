@@ -31,8 +31,10 @@ function PlayContainer({
   const [text, setText] = useState("");
 
   const handleTextChange = ({ target: { value } }) => {
-    // if (value.length < word.length) return;
+    // * can't use backspace
+    if (value.length < text.length) return;
 
+    // * can't enter incorrect character
     if (word[value.length - 1] === value[value.length - 1]) setText(value);
 
     if (value.length === word.length) onWordComplete();
