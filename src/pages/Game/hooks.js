@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   dictionaryEasy,
   dictionaryHard,
@@ -36,38 +36,33 @@ function useDictionary(defaultDifficulty) {
 
 // - Timer - //
 
-const timerReducer = (state, { started, tick }) => {
-  return { ...state, started, tick };
-};
-
 function useTimer(defaultStarted = true) {
-  const [{ started, tick }, dispatch] = useReducer(timerReducer, {
-    started: defaultStarted,
-    tick: 0,
-  });
+  const [started, setStarted] = useState(defaultStarted);
+  const [tick, setTick] = useState(0);
 
   const timer = useRef(null);
 
   const clearTimer = () => clearInterval(timer.current);
 
   useEffect(() => {
-    if (started)
-      timer.current = setInterval(
-        () => dispatch({ started, tick: tick + 10 }),
-        10
-      );
+    if (started) timer.current = setInterval(onTick, 10);
     else clearTimer();
 
     return clearTimer;
-  }, [started, tick]);
+  }, [started]);
 
-  const start = () => dispatch({ started: true, tick });
+  const onTick = () => setTick((tick) => tick + 10);
 
-  const pause = () => dispatch({ started: false, tick });
+  const start = () => setStarted(true);
 
-  const stop = () => dispatch({ started: false, tick: 0 });
+  const pause = () => setStarted(false);
 
-  return [tick, start, pause, stop];
+  const stop = () => {
+    setStarted(false);
+    setTick(0);
+  };
+
+  return { tick, start, pause, stop, onTick, clearTimer };
 }
 
 export { useDictionary, useTimer };

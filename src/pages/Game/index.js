@@ -18,6 +18,8 @@ export default function Game() {
 
   const [levelFactor, setLevelFactor] = useState(0);
 
+  const [scoreStarted, setScoreStarted] = useState(true);
+
   const handleWordComplete = () => {
     setLevelFactor(levelFactor + UNIT_LEVEL_FACTOR);
   };
@@ -26,7 +28,9 @@ export default function Game() {
 
   const onGamePause = () => {};
 
-  const onGameEnd = () => {};
+  const onGameEnd = () => {
+    setScoreStarted(false);
+  };
 
   console.log("game rendered: ", levelFactor);
 
@@ -38,12 +42,13 @@ export default function Game() {
       }
     >
       <CardContainer>
-        <Score started />
+        <Score started={scoreStarted} />
 
         <PlayContainer
           difficulty={difficulty}
           levelFactor={levelFactor}
-          handleOnWordComplete={handleWordComplete}
+          onWordCompleteListener={handleWordComplete}
+          onWordFailedListener={handleWordFailure}
         />
       </CardContainer>
     </GridContainer>

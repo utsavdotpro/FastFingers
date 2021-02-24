@@ -1,5 +1,6 @@
 import { Range } from "rc-slider";
 import React, { useRef, useState, useEffect } from "react";
+import { useTimer } from "../../pages/Game/hooks";
 import { getReadableScore } from "../../utils/methods";
 import Text from "../Text";
 
@@ -8,21 +9,18 @@ const COLOR = {
   rail: "#2a0b7d",
 };
 
-function Timer({ time }) {
-  const [tick, setTick] = useState(0);
-
-  const timer = useRef(null);
+function Timer({ time, onTimerEndListener = null }) {
+  const { tick, pause } = useTimer(true);
 
   useEffect(() => {
-    timer.current = setInterval(() => setTick((tick) => tick + 10), 10);
-    return clearTimer;
-  }, []);
+    if (tick >= time) onTimerEnd();
+  }, [tick]);
 
-  useEffect(() => {
-    if (tick >= time) clearTimer();
-  }, [tick, time]);
+  const onTimerEnd = () => {
+    pause();
 
-  const clearTimer = () => clearInterval(timer.current);
+    if (onTimerEndListener) onTimerEndListener();
+  };
 
   return (
     <div>

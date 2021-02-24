@@ -22,7 +22,8 @@ const reducer = (state, { type, data = "" }) => {
 function PlayContainer({
   difficulty,
   levelFactor,
-  handleOnWordComplete = null,
+  onWordCompleteListener = null,
+  onWordFailedListener = null,
 }) {
   const [{ word }, dispatch] = useReducer(reducer, {
     word: "",
@@ -50,10 +51,12 @@ function PlayContainer({
     setText("");
     dispatch({ type: ACTIONS.UPDATE_WORD, data: getWord() });
 
-    if (handleOnWordComplete) handleOnWordComplete();
+    if (onWordCompleteListener) onWordCompleteListener();
   };
 
-  const onWordFailed = () => {};
+  const onWordFailed = () => {
+    if (onWordFailedListener) onWordFailedListener();
+  };
 
   console.log("rendering...: ", levelFactor);
 
@@ -72,7 +75,7 @@ function PlayContainer({
         />
         <br />
         <br />
-        <Timer time={3000} />
+        <Timer time={3000} onTimerEndListener={onWordFailed} />
       </div>
     </>
   );
