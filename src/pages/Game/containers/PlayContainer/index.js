@@ -49,8 +49,11 @@ function PlayContainer({
 
   const { getWord, setDifficulty } = useDictionary(difficulty);
 
+  useEffect(() => setDifficulty(difficulty), [difficulty]);
+
   const processLoadWord = () => {
     const tempWord = getWord();
+
     dispatch({ type: ACTIONS.UPDATE_WORD, data: tempWord });
     dispatch({
       type: ACTIONS.UPDATE_TIME,

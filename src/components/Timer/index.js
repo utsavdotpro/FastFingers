@@ -1,5 +1,5 @@
 import { Range } from "rc-slider";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useTimer } from "../../pages/Game/hooks";
 import { getReadableScore } from "../../utils/methods";
 import Text from "../Text";

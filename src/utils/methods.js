@@ -1,4 +1,4 @@
-import { MIN_TIME_COUNTER } from "./configs";
+import { DIFFICULTIES, MIN_TIME_COUNTER } from "./configs";
 
 const getReadableScore = (milliseconds) => {
   let seconds = "" + Math.floor(milliseconds / 1000);
@@ -19,4 +19,19 @@ const getTimeForWord = (length, factor) => {
   return Math.max(Math.ceil(length / factor), MIN_TIME_COUNTER);
 };
 
-export { getReadableScore, getRandomItem, getTimeForWord };
+const getDifficultyBasedOnLevelFactor = (currentDifficulty, levelFactor) => {
+  const totalFactor = currentDifficulty.factor + levelFactor;
+
+  if (totalFactor >= DIFFICULTIES.hard.factor) return DIFFICULTIES.hard;
+
+  if (totalFactor >= DIFFICULTIES.medium.factor) return DIFFICULTIES.medium;
+
+  return DIFFICULTIES.easy;
+};
+
+export {
+  getReadableScore,
+  getRandomItem,
+  getTimeForWord,
+  getDifficultyBasedOnLevelFactor,
+};
