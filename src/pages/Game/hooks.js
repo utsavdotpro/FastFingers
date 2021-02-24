@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import {
   dictionaryEasy,
   dictionaryHard,
   dictionaryMedium,
 } from "../../utils/configs";
 import { getRandomItem } from "../../utils/methods";
+
+// - Dictionary - //
 
 function useDictionary(defaultDifficulty) {
   const [difficulty, setDifficulty] = useState(defaultDifficulty);
@@ -32,4 +34,40 @@ function useDictionary(defaultDifficulty) {
   return { getWord, setDifficulty };
 }
 
-export { useDictionary };
+// - Timer - //
+
+const timerReducer = (state, { started, tick }) => {
+  return { ...state, started, tick };
+};
+
+function useTimer(defaultStarted = true) {
+  const [{ started, tick }, dispatch] = useReducer(timerReducer, {
+    started: defaultStarted,
+    tick: 0,
+  });
+
+  const timer = useRef(null);
+
+  const clearTimer = () => clearInterval(timer.current);
+
+  useEffect(() => {
+    if (started)
+      timer.current = setInterval(
+        () => dispatch({ started, tick: tick + 10 }),
+        10
+      );
+    else clearTimer();
+
+    return clearTimer;
+  }, [started, tick]);
+
+  const start = () => dispatch({ started: true, tick });
+
+  const pause = () => dispatch({ started: false, tick });
+
+  const stop = () => dispatch({ started: false, tick: 0 });
+
+  return [tick, start, pause, stop];
+}
+
+export { useDictionary, useTimer };
