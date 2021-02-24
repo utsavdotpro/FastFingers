@@ -4,7 +4,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
 import { DIFFICULTIES } from "../../utils/configs";
-import { useDSlider } from "./hooks";
+import { useDifficultyMark } from "./hooks";
 
 const COLOR = {
   mark: "#efefef",
@@ -14,12 +14,10 @@ const COLOR = {
 };
 
 const getDifficultyForMark = (mark) => {
-  const keys = Object.keys(DIFFICULTIES);
+  for (const key in DIFFICULTIES)
+    if (DIFFICULTIES[key].factor === mark) return DIFFICULTIES[key];
 
-  // ! invalid mark
-  if (mark >= keys.length) return {};
-
-  return DIFFICULTIES[keys[mark]];
+  return {};
 };
 
 const getMark = (difficulty) => {
@@ -28,10 +26,9 @@ const getMark = (difficulty) => {
 
 const getMarks = () => {
   const mark = {};
-  let index = 0;
 
   for (const key in DIFFICULTIES)
-    mark[index++] = {
+    mark[DIFFICULTIES[key].factor] = {
       style: {
         color: COLOR.mark,
         textTransform: "uppercase",
@@ -44,15 +41,15 @@ const getMarks = () => {
 };
 
 function DSlider({
-  value = 0,
+  value = 1,
   onChange = () => {},
   vertical = false,
   included = true,
 }) {
   return (
     <Slider
-      min={0}
-      max={Object.keys(DIFFICULTIES).length - 1}
+      min={1}
+      max={DIFFICULTIES.hard.factor}
       value={value}
       onChange={onChange}
       marks={{ ...getMarks() }}
@@ -67,4 +64,4 @@ function DSlider({
 }
 
 export default DSlider;
-export { useDSlider, getDifficultyForMark, getMark };
+export { useDifficultyMark, getDifficultyForMark, getMark };

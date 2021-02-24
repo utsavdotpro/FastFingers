@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useDSlider(defaultMark = {}) {
+function useDifficultyMark(defaultMark = 1) {
   const [mark, setMark] = useState(defaultMark);
 
   const handleChange = (value) => setMark(value);
@@ -8,4 +8,4 @@ function useDSlider(defaultMark = {}) {
   return [mark, handleChange];
 }
 
-export { useDSlider };
+export { useDifficultyMark };

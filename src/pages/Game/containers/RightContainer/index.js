@@ -7,7 +7,7 @@ function RightContainer({ difficulty, levelFactor = 0 }) {
     <div className="px-10 pb-10 flex items-center lg:h-screen">
       <div className="h-72">
         <DSlider
-          value={getMark(difficulty) + levelFactor}
+          value={difficulty.factor + levelFactor}
           vertical
           included={false}
         />

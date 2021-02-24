@@ -1,7 +1,7 @@
 import React from "react";
 import Input, { useInput } from "../../components/Input";
 import DSlider, {
-  useDSlider,
+  useDifficultyMark,
   getDifficultyForMark,
 } from "../../components/DSlider";
 import Text from "../../components/Text";
@@ -16,7 +16,7 @@ export default function Home() {
   const history = useHistory();
 
   const [name, handleNameChange] = useInput("");
-  const [difficultyMark, handleDifficultyChange] = useDSlider(0);
+  const [difficultyMark, handleDifficultyChange] = useDifficultyMark(1);
   const [isSnackbarShown, showSnackbar] = useSnackbar(2000);
 
   const handleStartGame = () => {
