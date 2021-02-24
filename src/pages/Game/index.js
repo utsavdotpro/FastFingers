@@ -7,7 +7,6 @@ import LeftContainer from "./containers/LeftContainer";
 import RightContainer from "./containers/RightContainer";
 import { useParams } from "react-router-dom";
 import { DIFFICULTIES } from "../../utils/configs";
-import { useScore } from "./components/Score/hooks";
 import PlayContainer from "./containers/PlayContainer";
 
 export default function Game() {
@@ -16,8 +15,6 @@ export default function Game() {
   const [difficulty, setDifficulty] = useState(DIFFICULTIES[difficultyKey]);
 
   const [levelFactor, setLevelFactor] = useState(0);
-
-  const [startScore, pauseScore, stopScore, getScore] = useScore(true);
 
   const handleGameStart = () => {};
 
@@ -31,7 +28,7 @@ export default function Game() {
       Right={<RightContainer difficulty={difficulty} />}
     >
       <CardContainer>
-        <Score score={getScore()} />
+        <Score started />
 
         <PlayContainer difficulty={difficulty} levelFactor={levelFactor} />
       </CardContainer>
