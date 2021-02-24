@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { DIFFICULTIES, UNIT_LEVEL_FACTOR } from "../../utils/configs";
 import { getDifficultyBasedOnLevelFactor } from "../../utils/methods";
 import PlayContainer from "./containers/PlayContainer";
+import OverContainer from "./containers/OverContainer";
 
 export default function Game() {
   const { difficulty: difficultyKey, player } = useParams();
@@ -38,6 +39,11 @@ export default function Game() {
 
   const handleWordFailure = () => onGameEnd();
 
+  const handleGameRestart = () => {
+    setLevelFactor(0);
+    setScoreStarted(true);
+  };
+
   const onGamePause = () => {};
 
   const onGameEnd = () => {
@@ -54,16 +60,16 @@ export default function Game() {
       <CardContainer>
         <Score started={scoreStarted} />
 
-        {/* {scoreStarted ? ( */}
-        <PlayContainer
-          difficulty={difficulty}
-          levelFactor={levelFactor}
-          onWordCompleteListener={handleWordComplete}
-          onWordFailedListener={handleWordFailure}
-        />
-        {/* ) : (
-        <OverContainer />
-        )} */}
+        {scoreStarted ? (
+          <PlayContainer
+            difficulty={difficulty}
+            levelFactor={levelFactor}
+            onWordCompleteListener={handleWordComplete}
+            onWordFailedListener={handleWordFailure}
+          />
+        ) : (
+          <OverContainer onGameRestart={handleGameRestart} />
+        )}
       </CardContainer>
     </GridContainer>
   );
