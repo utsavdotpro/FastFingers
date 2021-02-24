@@ -16,6 +16,7 @@ const reducer = (state, { type, data = "" }) => {
   switch (type) {
     case ACTIONS.UPDATE_WORD:
       return { ...state, word: data };
+
     case ACTIONS.UPDATE_TIME:
       return { ...state, time: data };
 
@@ -88,8 +89,10 @@ function PlayContainer({
           value={text}
           onChange={handleTextChange}
         />
+
         <br />
         <br />
+
         <Timer
           time={time}
           levelFactor={levelFactor}
