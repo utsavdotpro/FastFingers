@@ -28,13 +28,15 @@ const DIFFICULTIES = {
 const ROUTES = [
   {
     key: "game",
-    path: "/game/:difficulty/:player",
-    Page: <Game />,
+    path: "/game/:difficulty",
+    Page: Game,
+    requireAuth: true,
   },
   {
     key: "home",
     path: "/",
-    Page: <Home />,
+    Page: Home,
+    requireAuth: false,
   },
 ];
 

@@ -20,7 +20,7 @@ import { useHistory } from "react-router-dom";
 import PillsGroup, { usePill } from "../../components/PillsGroup";
 import API from "../../utils/apis";
 
-export default function Home() {
+export default function Home({ setAuthToken }) {
   const history = useHistory();
 
   const [name, handleNameChange] = useInput("");
@@ -68,8 +68,12 @@ export default function Home() {
 
       API.players
         .login(request)
-        .then((res) => {
+        .then(({ data }) => {
           showSnackbar(buildSuccessMessage("Successfully logged in, you are!"));
+
+          setAuthToken(data.accessToken);
+
+          history.push(`/game/${getDifficultyForMark(difficultyMark).key}`);
         })
         .catch((err) => showSnackbar(buildErrorMessage(err.response.data)));
     } else {
@@ -77,7 +81,7 @@ export default function Home() {
 
       API.players
         .register(request)
-        .then((res) => {
+        .then(() => {
           showSnackbar(
             buildSuccessMessage("Successfully registered, you are!")
           );
@@ -85,8 +89,6 @@ export default function Home() {
         })
         .catch((err) => showSnackbar(buildErrorMessage(err.response.data)));
     }
-
-    // history.push(`/game/${getDifficultyForMark(difficultyMark).key}/${name}`);
   };
 
   return (
