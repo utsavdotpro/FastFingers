@@ -8,6 +8,8 @@ export default function Input({
   onChange = () => {},
   autoFocus = true,
   uppercase = false,
+  hidden = false,
+  className = "",
 }) {
   return (
     <input
@@ -16,9 +18,12 @@ export default function Input({
       value={value}
       onChange={onChange}
       autoFocus={autoFocus}
-      className={`bg-white p-3 rounded-md outline-none shadow-md font-bold text-center ${
-        uppercase ? "uppercase" : ""
-      } tracking-wider w-full`}
+      className={`
+        bg-white p-3 rounded-md outline-none shadow-md font-bold text-center tracking-wider w-full
+        ${uppercase ? "uppercase" : ""}
+        ${hidden ? "hidden" : ""}
+        ${className}
+      `}
     />
   );
 }

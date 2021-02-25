@@ -16,6 +16,7 @@ import Snackbar, {
   buildInfoMessage,
 } from "../../components/Snackbar";
 import { useHistory } from "react-router-dom";
+import PillsGroup, { usePill } from "../../components/PillsGroup";
 
 export default function Home() {
   const history = useHistory();
@@ -25,6 +26,8 @@ export default function Home() {
   const [password, handlePasswordChange] = useInput("");
 
   const [difficultyMark, handleDifficultyChange] = useDifficultyMark(1);
+  const [pillIndex, setPillIndex] = usePill(0);
+
   const { message, isShown: isSnackbarShown, show: showSnackbar } = useSnackbar(
     "",
     2000
@@ -73,15 +76,23 @@ export default function Home() {
         <br />
         <br />
 
+        <PillsGroup
+          pills={["Anonymus", "Login", "Register"]}
+          activeIndex={pillIndex}
+          onPillChange={setPillIndex}
+        />
+
+        <br />
+        <br />
+
         <div className="md:w-3/5 w-full">
           <Input
             value={name}
             onChange={handleNameChange}
             placeholder="Enter Your Name"
+            className="mb-3"
+            hidden={pillIndex === 1}
           />
-
-          <br />
-          <br />
 
           <Input
             type={"email"}
@@ -89,10 +100,9 @@ export default function Home() {
             onChange={handleEmailChange}
             placeholder="Enter Your Email"
             autoFocus={false}
+            className="mb-3"
+            hidden={pillIndex === 0}
           />
-
-          <br />
-          <br />
 
           <Input
             type={"password"}
@@ -100,6 +110,7 @@ export default function Home() {
             onChange={handlePasswordChange}
             placeholder="Enter Your Password"
             autoFocus={false}
+            hidden={pillIndex === 0}
           />
 
           <br />
