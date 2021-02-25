@@ -23,6 +23,13 @@ const API = {
       );
     },
   },
+  gameHistory: {
+    insert(request, authToken) {
+      return sendRequest(SERVER_URL + "game-history/insert", request, {
+        Authorization: "Bearer " + authToken,
+      });
+    },
+  },
 };
 
 export default API;

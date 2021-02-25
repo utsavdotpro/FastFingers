@@ -69,13 +69,18 @@ export default function Home({ setAuthToken }) {
       API.players
         .login(request)
         .then(({ data }) => {
+          console.log("data", data);
           showSnackbar(buildSuccessMessage("Successfully logged in, you are!"));
 
           setAuthToken(data.accessToken);
 
           history.push(`/game/${getDifficultyForMark(difficultyMark).key}`);
         })
-        .catch((err) => showSnackbar(buildErrorMessage(err.response.data)));
+        .catch((err) => {
+          if (err.response && err.response.data)
+            showSnackbar(buildErrorMessage(err.response.data));
+          else showSnackbar(buildErrorMessage("Something is not right!"));
+        });
     } else {
       // + Register
 
@@ -87,7 +92,11 @@ export default function Home({ setAuthToken }) {
           );
           setPillIndex(0);
         })
-        .catch((err) => showSnackbar(buildErrorMessage(err.response.data)));
+        .catch((err) => {
+          if (err.response && err.response.data)
+            showSnackbar(buildErrorMessage(err.response.data));
+          else showSnackbar(buildErrorMessage("Something is not right!"));
+        });
     }
   };
 

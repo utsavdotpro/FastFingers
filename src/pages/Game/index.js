@@ -55,7 +55,11 @@ export default function Game({ authToken }) {
       levelFactor
     );
 
-    if (newDifficulty.key !== difficulty.key) setDifficulty(newDifficulty);
+    if (newDifficulty.key !== difficulty.key) {
+      game.current.end_difficulty = newDifficulty.key;
+
+      setDifficulty(newDifficulty);
+    }
   }, [levelFactor]);
 
   useEffect(() => setLevelFactor(0), [difficulty]);
@@ -70,9 +74,25 @@ export default function Game({ authToken }) {
   };
 
   const handleScoreStop = (score) => {
-    console.log("score ended: ", score);
+    saveScoreToData(score);
+
     scores.push(score);
+
     setScores(scores);
+  };
+
+  const saveScoreToData = (score) => {
+    API.gameHistory
+      .insert(
+        {
+          score,
+          start_level: game.current.start_difficulty,
+          end_level: game.current.end_difficulty,
+        },
+        authToken
+      )
+      .then(() => {})
+      .catch(() => {});
   };
 
   const onGameEnd = () => {
