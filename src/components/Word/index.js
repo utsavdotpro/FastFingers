@@ -1,21 +1,48 @@
 import React from "react";
 
-function Letter({ children }) {
+const getLetterObject = (letter, currentIndex, activeIndex, activeStatus) => {
+  const l = {
+    key: letter + currentIndex,
+    value: letter,
+    status: "ideal",
+    active: currentIndex === activeIndex,
+  };
+
+  if (l.active) l.status = activeStatus;
+  else if (currentIndex < activeIndex) l.status = "correct";
+
+  return l;
+};
+
+function Letter({ value, status, active }) {
+  const textColor =
+    status === "correct"
+      ? "text-green-400"
+      : status === "incorrect"
+      ? "text-red-400"
+      : "text-white";
+
+  const textSize = active ? "text-5xl" : "text-4xl";
+
   return (
-    <span className="text-4xl text-white tracking-widest">
-      <b>{children}</b>
+    <span className={`${textSize} tracking-widest ${textColor} transition-all`}>
+      <b>{value}</b>
     </span>
   );
 }
 
-export default function Word({ children }) {
+export default function Word({
+  children,
+  activeIndex = 0,
+  activeStatus = "active",
+}) {
   return (
     <div>
       {children
         .toUpperCase()
         .split("")
         .map((l, index) => (
-          <Letter key={`letter-${index}`}>{l}</Letter>
+          <Letter {...getLetterObject(l, index, activeIndex, activeStatus)} />
         ))}
     </div>
   );

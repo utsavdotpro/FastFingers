@@ -37,14 +37,19 @@ function PlayContainer({
 
   const [text, setText] = useState("");
 
+  const [currentWordStatus, setCurrentWordStatus] = useState("active");
+
   const handleTextChange = ({ target: { value } }) => {
     // * can't use backspace
     if (value.length < text.length) return;
 
     // * can't enter incorrect character
-    if (word[value.length - 1] === value[value.length - 1]) setText(value);
+    if (word[value.length - 1] === value[value.length - 1]) {
+      setCurrentWordStatus("active");
 
-    if (value.length === word.length) onWordComplete();
+      if (value.length === word.length) onWordComplete();
+      else setText(value); // * saving one extra render, not sure if its worth it
+    } else setCurrentWordStatus("incorrect");
   };
 
   const { getWord, setDifficulty } = useDictionary(difficulty);
@@ -77,7 +82,9 @@ function PlayContainer({
 
   return (
     <>
-      <Word>{word}</Word>
+      <Word activeIndex={text.length} activeStatus={currentWordStatus}>
+        {word}
+      </Word>
 
       <br />
       <br />
