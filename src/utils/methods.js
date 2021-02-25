@@ -1,13 +1,13 @@
 import { DIFFICULTIES, MIN_TIME_COUNTER } from "./configs";
 
-const getReadableScore = (milliseconds) => {
+const getReadableScore = (milliseconds, showMS = true) => {
   let seconds = "" + Math.floor(milliseconds / 1000);
   milliseconds = "" + Math.floor(milliseconds % 1000);
 
   seconds = seconds.padStart(2, "0");
-  milliseconds = milliseconds.padStart(4, "0");
+  milliseconds = showMS ? "." + milliseconds.padStart(4, "0") : "";
 
-  return "00 : " + seconds + " . " + milliseconds;
+  return "00 : " + seconds + milliseconds;
 };
 
 const getRandomItem = (array) => {

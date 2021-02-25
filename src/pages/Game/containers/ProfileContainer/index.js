@@ -5,8 +5,9 @@ import Button from "./../../../../components/Button";
 
 import imgUser from "./../../../../assets/images/defaultUser.png";
 import { Link } from "react-router-dom";
+import ScoreTable from "../../components/ScoreTable";
 
-function ProfileContainer({ player }) {
+function ProfileContainer({ player, scores = [] }) {
   return (
     <div className="lg:pr-0 p-10 pb-0">
       <div className="rounded-xl bg-primary p-5 flex items-center flex-col justify-center">
@@ -19,6 +20,11 @@ function ProfileContainer({ player }) {
             Quit
           </Button>
         </Link>
+      </div>
+      <br />
+
+      <div className="rounded-xl bg-primary p-5 flex items-center flex-col justify-center text-white">
+        <ScoreTable />
       </div>
     </div>
   );
