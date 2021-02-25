@@ -14,14 +14,16 @@ export default function ScoreTable({ scores = [] }) {
   return (
     <div className="rounded-md w-full overflow-hidden border">
       <table className="w-full text-center table-fixed">
-        <tr className="bg-white text-black">
-          <th colspan="2" className="py-1">
-            Score Board
-          </th>
-        </tr>
-        {scores.map((score) => (
-          <ScoreRow score={score} />
-        ))}
+        <tbody>
+          <tr className="bg-white text-black">
+            <th colSpan="2" className="py-1">
+              Score Board
+            </th>
+          </tr>
+          {scores.map((score) => (
+            <ScoreRow score={score} />
+          ))}
+        </tbody>
       </table>
     </div>
   );
