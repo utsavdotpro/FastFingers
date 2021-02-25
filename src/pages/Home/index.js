@@ -71,12 +71,7 @@ export default function Home() {
         .then((res) => {
           showSnackbar(buildSuccessMessage("Successfully logged in, you are!"));
         })
-        .catch((err) => {
-          if (err.request.status === 401)
-            showSnackbar(
-              buildErrorMessage("Incorrect email or password, you submitted!")
-            );
-        });
+        .catch((err) => showSnackbar(buildErrorMessage(err.response.data)));
     } else {
       // + Register
 
@@ -86,12 +81,9 @@ export default function Home() {
           showSnackbar(
             buildSuccessMessage("Successfully registered, you are!")
           );
+          setPillIndex(0);
         })
-        .catch((err) => {
-          showSnackbar(
-            buildErrorMessage("Incorrect email or password, you entered!")
-          );
-        });
+        .catch((err) => showSnackbar(buildErrorMessage(err.response.data)));
     }
 
     // history.push(`/game/${getDifficultyForMark(difficultyMark).key}/${name}`);
