@@ -1,6 +1,6 @@
 import React from "react";
 
-function GridContainer({ Left = "", Right = "", children }) {
+export default function GridContainer({ Left = "", Right = "", children }) {
   return (
     <div className="lg:flex justify-center">
       <div className="flex-1">{!!Left ? Left : ""}</div>
@@ -13,5 +13,3 @@ function GridContainer({ Left = "", Right = "", children }) {
     </div>
   );
 }
-
-export default GridContainer;

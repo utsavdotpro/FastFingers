@@ -9,7 +9,6 @@ import { getTimeForWord } from "./../../../../utils/methods";
 const ACTIONS = {
   UPDATE_WORD: "UPDATE_WORD",
   UPDATE_TIME: "UPDATE_TIME",
-  UPDATE_DIFFICULTY: "UPDATE_DIFFICULTY",
 };
 
 const reducer = (state, { type, data = "" }) => {

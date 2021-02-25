@@ -8,7 +8,7 @@ function Letter({ children }) {
   );
 }
 
-function Word({ children }) {
+export default function Word({ children }) {
   return (
     <div>
       {children
@@ -20,5 +20,3 @@ function Word({ children }) {
     </div>
   );
 }
-
-export default Word;

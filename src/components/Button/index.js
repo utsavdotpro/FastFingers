@@ -1,6 +1,6 @@
 import React from "react";
 
-function Button({
+export default function Button({
   brand = "white",
   color = "black",
   children,
@@ -15,5 +15,3 @@ function Button({
     </button>
   );
 }
-
-export default Button;

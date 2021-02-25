@@ -44,8 +44,6 @@ export default function Game() {
     setScoreStarted(true);
   };
 
-  const onGamePause = () => {};
-
   const onGameEnd = () => {
     setScoreStarted(false);
   };

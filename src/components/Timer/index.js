@@ -9,7 +9,11 @@ const COLOR = {
   rail: "#2a0b7d",
 };
 
-function Timer({ time, levelFactor, onTimerEndListener = null }) {
+export default function Timer({
+  time,
+  levelFactor,
+  onTimerEndListener = null,
+}) {
   const { tick, restart, pause } = useTimer(false);
 
   useEffect(() => {
@@ -40,5 +44,3 @@ function Timer({ time, levelFactor, onTimerEndListener = null }) {
     </div>
   );
 }
-
-export default Timer;

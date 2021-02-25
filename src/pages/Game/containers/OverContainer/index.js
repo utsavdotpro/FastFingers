@@ -1,11 +1,6 @@
 import React from "react";
 import Button from "../../../../components/Button";
 import Text from "../../../../components/Text";
-
-const isGoodScore = (score) => {
-  return score >= 60000;
-};
-
 function OverContainer({ onGameRestart = () => {} }) {
   return (
     <div className="text-center">

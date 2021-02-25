@@ -20,10 +20,6 @@ const getDifficultyForMark = (mark) => {
   return {};
 };
 
-const getMark = (difficulty) => {
-  return Object.keys(DIFFICULTIES).indexOf(difficulty.key);
-};
-
 const getMarks = () => {
   const mark = {};
 
@@ -40,7 +36,7 @@ const getMarks = () => {
   return mark;
 };
 
-function DSlider({
+export default function DSlider({
   value = 1,
   onChange = () => {},
   vertical = false,
@@ -63,5 +59,4 @@ function DSlider({
   );
 }
 
-export default DSlider;
-export { useDifficultyMark, getDifficultyForMark, getMark };
+export { useDifficultyMark, getDifficultyForMark };

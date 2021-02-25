@@ -1,7 +1,11 @@
 import React from "react";
 import { useInput } from "./hooks";
 
-function Input({ value = "", placeholder = "", onChange = () => {} }) {
+export default function Input({
+  value = "",
+  placeholder = "",
+  onChange = () => {},
+}) {
   return (
     <input
       type="text"
@@ -14,5 +18,4 @@ function Input({ value = "", placeholder = "", onChange = () => {} }) {
   );
 }
 
-export default Input;
 export { useInput };
