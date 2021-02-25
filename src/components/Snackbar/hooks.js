@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-function useSnackbar(duration, shown = false) {
+function useSnackbar(initialMessage = "", duration, shown = false) {
+  const [message, setMessage] = useState(initialMessage);
   const [isShown, setIsShown] = useState(shown);
 
   const durationTimer = useRef(null);
@@ -12,11 +13,14 @@ function useSnackbar(duration, shown = false) {
 
   const clearDurationTimer = () => clearTimeout(durationTimer.current);
 
-  const show = () => setIsShown(true);
+  const show = (message = null) => {
+    if (message) setMessage(message);
+    setIsShown(true);
+  };
 
   const hide = () => setIsShown(false);
 
-  return [isShown, show, hide];
+  return { message, isShown, show, hide };
 }
 
 export { useSnackbar };

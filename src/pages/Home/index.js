@@ -10,7 +10,10 @@ import Button from "../../components/Button";
 import GridContainer from "../../containers/GirdContainer";
 import Axios from "axios";
 
-import Snackbar, { useSnackbar } from "../../components/Snackbar";
+import Snackbar, {
+  useSnackbar,
+  buildErrorMessage,
+} from "../../components/Snackbar";
 import { useHistory } from "react-router-dom";
 
 export default function Home() {
@@ -21,12 +24,30 @@ export default function Home() {
   const [password, handlePasswordChange] = useInput("");
 
   const [difficultyMark, handleDifficultyChange] = useDifficultyMark(1);
-  const [isSnackbarShown, showSnackbar] = useSnackbar(2000);
+  const {
+    message,
+    isShown: isSnackbarShown,
+    show: showSnackbar,
+    hide,
+  } = useSnackbar("", 2000);
 
   const handleStartGame = () => {
-    if (name === "") showSnackbar();
-    else
-      history.push(`/game/${getDifficultyForMark(difficultyMark).key}/${name}`);
+    if (name === "") {
+      showSnackbar(buildErrorMessage("Name enter, you must!"));
+      return;
+    }
+
+    if (email === "") {
+      showSnackbar(buildErrorMessage("Email enter, you must!"));
+      return;
+    }
+
+    if (password === "") {
+      showSnackbar(buildErrorMessage("Password enter, you must!"));
+      return;
+    }
+
+    history.push(`/game/${getDifficultyForMark(difficultyMark).key}/${name}`);
   };
 
   return (
@@ -87,10 +108,7 @@ export default function Home() {
           Start Game
         </Button>
 
-        <Snackbar isShown={isSnackbarShown}>
-          <b className="text-yellow-400">Warning: </b> You have a name, don't
-          you?!
-        </Snackbar>
+        <Snackbar isShown={isSnackbarShown}>{message}</Snackbar>
       </CardContainer>
     </GridContainer>
   );
