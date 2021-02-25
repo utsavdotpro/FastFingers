@@ -13,10 +13,12 @@ import Axios from "axios";
 import Snackbar, {
   useSnackbar,
   buildErrorMessage,
-  buildInfoMessage,
+  buildSuccessMessage,
+  buildWarningMessage,
 } from "../../components/Snackbar";
 import { useHistory } from "react-router-dom";
 import PillsGroup, { usePill } from "../../components/PillsGroup";
+import API from "../../utils/apis";
 
 export default function Home() {
   const history = useHistory();
@@ -33,29 +35,64 @@ export default function Home() {
     2000
   );
 
-  const handleStartGame = () => {
+  const validateParams = () => {
     if (pillIndex !== 0 && name === "") {
-      showSnackbar(buildErrorMessage("Name enter, you must!"));
-      return;
+      showSnackbar(buildWarningMessage("Name enter, you must!"));
+      return false;
     }
 
     if (email === "") {
-      showSnackbar(buildErrorMessage("Email enter, you must!"));
-      return;
+      showSnackbar(buildWarningMessage("Email enter, you must!"));
+      return false;
     }
 
     if (password === "") {
-      showSnackbar(buildErrorMessage("Password enter, you must!"));
-      return;
+      showSnackbar(buildWarningMessage("Password enter, you must!"));
+      return false;
     }
 
-    Axios.post("http://localhost:3000/apis/players/insert", {
+    return true;
+  };
+
+  const handleStartGame = () => {
+    if (!validateParams()) return;
+
+    const request = {
       name,
       email,
       password,
-    }).then(() => {
-      showSnackbar(buildInfoMessage("Successfully registered, you are!"));
-    });
+    };
+
+    if (pillIndex === 0) {
+      // + Login
+
+      API.players
+        .login(request)
+        .then((res) => {
+          showSnackbar(buildSuccessMessage("Successfully logged in, you are!"));
+        })
+        .catch((err) => {
+          if (err.request.status === 401)
+            showSnackbar(
+              buildErrorMessage("Incorrect email or password, you submitted!")
+            );
+        });
+    } else {
+      // + Register
+
+      API.players
+        .register(request)
+        .then((res) => {
+          showSnackbar(
+            buildSuccessMessage("Successfully registered, you are!")
+          );
+        })
+        .catch((err) => {
+          showSnackbar(
+            buildErrorMessage("Incorrect email or password, you submitted!")
+          );
+        });
+    }
 
     // history.push(`/game/${getDifficultyForMark(difficultyMark).key}/${name}`);
   };
