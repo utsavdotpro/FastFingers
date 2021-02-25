@@ -94,6 +94,7 @@ function PlayContainer({
           placeholder="Type here!"
           value={text}
           onChange={handleTextChange}
+          uppercase
         />
 
         <br />

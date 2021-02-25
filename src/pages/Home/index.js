@@ -16,6 +16,9 @@ export default function Home() {
   const history = useHistory();
 
   const [name, handleNameChange] = useInput("");
+  const [email, handleEmailChange] = useInput("");
+  const [password, handlePasswordChange] = useInput("");
+
   const [difficultyMark, handleDifficultyChange] = useDifficultyMark(1);
   const [isSnackbarShown, showSnackbar] = useSnackbar(2000);
 
@@ -47,8 +50,32 @@ export default function Home() {
             onChange={handleNameChange}
             placeholder="Enter Your Name"
           />
+
           <br />
           <br />
+
+          <Input
+            type={"email"}
+            value={email}
+            onChange={handleEmailChange}
+            placeholder="Enter Your Email"
+            autoFocus={false}
+          />
+
+          <br />
+          <br />
+
+          <Input
+            type={"password"}
+            value={password}
+            onChange={handlePasswordChange}
+            placeholder="Enter Your Password"
+            autoFocus={false}
+          />
+
+          <br />
+          <br />
+
           <DSlider value={difficultyMark} onChange={handleDifficultyChange} />
         </div>
 
