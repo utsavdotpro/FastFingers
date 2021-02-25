@@ -1,10 +1,10 @@
 import React from "react";
 import { getReadableScore } from "../../../../utils/methods";
 
-function ScoreRow({ score }) {
+function ScoreRow({ score, number }) {
   return (
     <tr>
-      <td className="py-2">#1</td>
+      <td className="py-2">#{number}</td>
       <td className="py-2">{getReadableScore(score, false)}</td>
     </tr>
   );
@@ -20,8 +20,8 @@ export default function ScoreTable({ scores = [] }) {
               Score Board
             </th>
           </tr>
-          {scores.map((score) => (
-            <ScoreRow score={score} />
+          {scores.map((score, index) => (
+            <ScoreRow key={index + score} number={index + 1} score={score} />
           ))}
         </tbody>
       </table>

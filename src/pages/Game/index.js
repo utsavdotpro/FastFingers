@@ -21,6 +21,8 @@ export default function Game({ authToken }) {
 
   const [player, setPlayer] = useState("Loading");
 
+  const [scores, setScores] = useState([]);
+
   useEffect(() => {
     API.players
       .profile(authToken)
@@ -67,19 +69,25 @@ export default function Game({ authToken }) {
     setScoreStarted(true);
   };
 
+  const handleScoreStop = (score) => {
+    console.log("score ended: ", score);
+    scores.push(score);
+    setScores(scores);
+  };
+
   const onGameEnd = () => {
     setScoreStarted(false);
   };
 
   return (
     <GridContainer
-      Left={<ProfileContainer player={player} />}
+      Left={<ProfileContainer player={player} scores={scores} />}
       Right={
         <LevelContainer difficulty={difficulty} levelFactor={levelFactor} />
       }
     >
       <CardContainer>
-        <Score started={scoreStarted} />
+        <Score started={scoreStarted} OnScoreStopListener={handleScoreStop} />
 
         {scoreStarted ? (
           <PlayContainer

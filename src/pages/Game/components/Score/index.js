@@ -5,12 +5,17 @@ import { useTimer } from "../../hooks";
 
 import icScore from "./../../../../assets/icons/ic_score.png";
 
-function Score({ started = true }) {
-  const { tick, pause } = useTimer(started);
+function Score({ started = true, OnScoreStopListener = null }) {
+  const { tick, stop } = useTimer(started);
 
   useEffect(() => {
-    if (!started) pause();
+    if (!started) processStop();
   }, [started]);
+
+  const processStop = () => {
+    if (OnScoreStopListener) OnScoreStopListener(tick);
+    stop();
+  };
 
   return (
     <div className="absolute top-0 mt-16 flex items-center">

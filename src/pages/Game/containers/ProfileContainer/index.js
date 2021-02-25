@@ -24,7 +24,7 @@ function ProfileContainer({ player, scores = [] }) {
       <br />
 
       <div className="rounded-xl bg-primary p-5 flex items-center flex-col justify-center text-white">
-        <ScoreTable />
+        <ScoreTable scores={scores} />
       </div>
     </div>
   );
