@@ -2,8 +2,9 @@ import Axios from "axios";
 
 const SERVER_URL = "http://localhost:3000/apis/";
 
-function sendRequest(url, request) {
-  return Axios.post(url, request);
+function sendRequest(url, request, headers = {}) {
+  console.log(url, request, headers);
+  return Axios.post(url, request, { headers });
 }
 
 const API = {
@@ -13,6 +14,13 @@ const API = {
     },
     register(request) {
       return sendRequest(SERVER_URL + "players/register", request);
+    },
+    profile(authToken) {
+      return sendRequest(
+        SERVER_URL + "players/profile",
+        {},
+        { Authorization: "Bearer " + authToken }
+      );
     },
   },
 };

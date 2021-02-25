@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CardContainer from "../../containers/CardContainer";
 import GridContainer from "../../containers/GirdContainer";
 
@@ -10,11 +10,27 @@ import { DIFFICULTIES, UNIT_LEVEL_FACTOR } from "../../utils/configs";
 import { getDifficultyBasedOnLevelFactor } from "../../utils/methods";
 import PlayContainer from "./containers/PlayContainer";
 import OverContainer from "./containers/OverContainer";
+import API from "../../utils/apis";
 
-export default function Game() {
-  const { difficulty: difficultyKey, player } = useParams();
+export default function Game({ authToken }) {
+  const { difficulty: difficultyKey } = useParams();
 
   const [difficulty, setDifficulty] = useState(DIFFICULTIES[difficultyKey]);
+
+  const [player, setPlayer] = useState("Loading");
+
+  useEffect(() => {
+    API.players.profile(authToken).then(({ data }) => {
+      console.log(data);
+      setPlayer(data.name);
+    });
+  }, []);
+
+  const game = useRef({
+    score: 0,
+    start_difficulty: difficulty.key,
+    end_difficulty: difficulty.key,
+  });
 
   const [levelFactor, setLevelFactor] = useState(0);
 
