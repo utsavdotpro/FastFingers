@@ -34,7 +34,7 @@ export default function Home() {
   );
 
   const handleStartGame = () => {
-    if (name === "") {
+    if (pillIndex !== 0 && name === "") {
       showSnackbar(buildErrorMessage("Name enter, you must!"));
       return;
     }
@@ -64,25 +64,24 @@ export default function Home() {
     <GridContainer>
       <CardContainer>
         <Text size="4xl" bold="true" align="center">
-          Hi there!
+          Welcome!
         </Text>
 
         <br />
 
         <Text size="xl" color="muted" bold="true" align="center">
-          My name is 'awesome', but you can call me
+          Ready to face the challenge, are you?
         </Text>
 
         <br />
         <br />
 
         <PillsGroup
-          pills={["Anonymus", "Login", "Register"]}
+          pills={["Login", "Register"]}
           activeIndex={pillIndex}
           onPillChange={setPillIndex}
         />
 
-        <br />
         <br />
 
         <div className="md:w-3/5 w-full">
@@ -91,7 +90,7 @@ export default function Home() {
             onChange={handleNameChange}
             placeholder="Enter Your Name"
             className="mb-3"
-            hidden={pillIndex === 1}
+            hidden={pillIndex === 0}
           />
 
           <Input
@@ -101,7 +100,6 @@ export default function Home() {
             placeholder="Enter Your Email"
             autoFocus={false}
             className="mb-3"
-            hidden={pillIndex === 0}
           />
 
           <Input
@@ -110,7 +108,6 @@ export default function Home() {
             onChange={handlePasswordChange}
             placeholder="Enter Your Password"
             autoFocus={false}
-            hidden={pillIndex === 0}
           />
 
           <br />
