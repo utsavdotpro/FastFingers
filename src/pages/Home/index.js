@@ -13,6 +13,7 @@ import Axios from "axios";
 import Snackbar, {
   useSnackbar,
   buildErrorMessage,
+  buildInfoMessage,
 } from "../../components/Snackbar";
 import { useHistory } from "react-router-dom";
 
@@ -24,12 +25,10 @@ export default function Home() {
   const [password, handlePasswordChange] = useInput("");
 
   const [difficultyMark, handleDifficultyChange] = useDifficultyMark(1);
-  const {
-    message,
-    isShown: isSnackbarShown,
-    show: showSnackbar,
-    hide,
-  } = useSnackbar("", 2000);
+  const { message, isShown: isSnackbarShown, show: showSnackbar } = useSnackbar(
+    "",
+    2000
+  );
 
   const handleStartGame = () => {
     if (name === "") {
@@ -47,7 +46,15 @@ export default function Home() {
       return;
     }
 
-    history.push(`/game/${getDifficultyForMark(difficultyMark).key}/${name}`);
+    Axios.post("http://localhost:3000/apis/players/insert", {
+      name,
+      email,
+      password,
+    }).then(() => {
+      showSnackbar(buildInfoMessage("Successfully registered, you are!"));
+    });
+
+    // history.push(`/game/${getDifficultyForMark(difficultyMark).key}/${name}`);
   };
 
   return (
