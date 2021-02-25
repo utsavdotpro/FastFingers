@@ -8,7 +8,6 @@ import Text from "../../components/Text";
 import CardContainer from "../../containers/CardContainer";
 import Button from "../../components/Button";
 import GridContainer from "../../containers/GirdContainer";
-import Axios from "axios";
 
 import Snackbar, {
   useSnackbar,
@@ -16,6 +15,7 @@ import Snackbar, {
   buildSuccessMessage,
   buildWarningMessage,
 } from "../../components/Snackbar";
+
 import { useHistory } from "react-router-dom";
 import PillsGroup, { usePill } from "../../components/PillsGroup";
 import API from "../../utils/apis";
@@ -89,7 +89,7 @@ export default function Home() {
         })
         .catch((err) => {
           showSnackbar(
-            buildErrorMessage("Incorrect email or password, you submitted!")
+            buildErrorMessage("Incorrect email or password, you entered!")
           );
         });
     }
