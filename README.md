@@ -5,6 +5,8 @@ Tech Stack: **ReactJS**, **HTML**, **CSS/SCSS**, **Tailwind**
 
 ## Samples
 
-<img src="./samples/preview_home.png" height=350>
-&nbsp;
-<img src="./samples/preview_game.png" height=350>
+<p>
+  <img alt="Light" src="./samples/preview_home.png" width="40%">
+  &nbsp;&nbsp;
+  <img alt="Dark" src="./samples/preview_game.png" width="55%">
+</p>
