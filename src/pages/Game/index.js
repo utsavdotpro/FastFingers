@@ -26,13 +26,13 @@ export default function Game({ authToken }) {
   useEffect(() => {
     API.players
       .profile(authToken)
-      .then(({ data }) => {
-        console.log(data);
-        setPlayer(data.name);
-      })
-      .catch(() => {
-        history.push(`/`);
-      });
+      .then(({ data }) => setPlayer(data.name))
+      .catch(() => history.push(`/`));
+
+    API.gameHistory
+      .fetch(authToken)
+      .then(({ data }) => setScores(data.map((d) => d.score)))
+      .catch(() => history.push(`/`));
   }, [authToken]);
 
   const game = useRef({
@@ -82,17 +82,14 @@ export default function Game({ authToken }) {
   };
 
   const saveScoreToData = (score) => {
-    API.gameHistory
-      .insert(
-        {
-          score,
-          start_level: game.current.start_difficulty,
-          end_level: game.current.end_difficulty,
-        },
-        authToken
-      )
-      .then(() => {})
-      .catch(() => {});
+    API.gameHistory.insert(
+      {
+        score,
+        start_level: game.current.start_difficulty,
+        end_level: game.current.end_difficulty,
+      },
+      authToken
+    );
   };
 
   const onGameEnd = () => {

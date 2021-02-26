@@ -3,7 +3,6 @@ import Axios from "axios";
 const SERVER_URL = "http://localhost:3000/apis/";
 
 function sendRequest(url, request, headers = {}) {
-  console.log(url, request, headers);
   return Axios.post(url, request, { headers });
 }
 
@@ -24,6 +23,13 @@ const API = {
     },
   },
   gameHistory: {
+    fetch(authToken) {
+      return sendRequest(
+        SERVER_URL + "game-history/fetch",
+        {},
+        { Authorization: "Bearer " + authToken }
+      );
+    },
     insert(request, authToken) {
       return sendRequest(SERVER_URL + "game-history/insert", request, {
         Authorization: "Bearer " + authToken,
