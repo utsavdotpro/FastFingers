@@ -1,5 +1,5 @@
 import React from "react";
-import { getReadableScore } from "../../../../utils/methods";
+import { getReadableScore } from "../../utils/methods";
 
 function ScoreRow({ score, number }) {
   return (

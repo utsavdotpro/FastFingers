@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Text from "../../../../components/Text";
-import { getReadableScore } from "../../../../utils/methods";
-import { useTimer } from "../../hooks";
+import Text from "../Text";
+import { getReadableScore } from "../../utils/methods";
+import { useTimer } from "../../pages/Game/hooks";
 
-import icScore from "./../../../../assets/icons/ic_score.png";
+import icScore from "./../../assets/icons/ic_score.png";
 
 function Score({ started = true, OnScoreStopListener = null }) {
   const { tick, stop } = useTimer(started);

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import CardContainer from "../../containers/CardContainer";
 import GridContainer from "../../containers/GirdContainer";
 
-import Score from "./components/Score";
+import Score from "./../../components/Score";
 import ProfileContainer from "./containers/ProfileContainer";
 import LevelContainer from "./containers/LevelContainer";
 import { useHistory, useParams } from "react-router-dom";

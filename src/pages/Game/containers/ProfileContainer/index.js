@@ -5,7 +5,7 @@ import Button from "./../../../../components/Button";
 
 import imgUser from "./../../../../assets/images/defaultUser.png";
 import { Link } from "react-router-dom";
-import ScoreTable from "../../components/ScoreTable";
+import ScoreTable from "../../../../components/ScoreTable";
 
 function ProfileContainer({ player, scores = [] }) {
   return (
