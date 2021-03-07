@@ -1,4 +1,4 @@
-import React from "react";
+import Snackbar from "./Snackbar";
 import { useSnackbar } from "./hooks";
 
 const TYPE = {
@@ -32,17 +32,7 @@ const buildInfoMessage = (message) => {
   return buildMessage(TYPE.INFO, message);
 };
 
-export default function Snackbar({ isShown = false, children }) {
-  return (
-    <div
-      className={`absolute bottom-0 mb-6 py-3 px-5 bg-opacity-30 bg-black text-white rounded-md text-sm transition-all ${
-        isShown ? "opacity-1" : "invisible opacity-0"
-      }`}
-    >
-      {children}
-    </div>
-  );
-}
+export default Snackbar;
 
 export {
   useSnackbar,
