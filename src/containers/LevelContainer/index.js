@@ -1,6 +1,6 @@
 import React from "react";
 
-import DSlider from "../../../../components/DSlider";
+import DSlider from "./../../components/DSlider";
 
 function LevelContainer({ difficulty, levelFactor = 0 }) {
   // Todo: see why it's not rendering immediately

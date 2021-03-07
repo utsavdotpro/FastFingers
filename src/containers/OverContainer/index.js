@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../../../../components/Button";
-import Text from "../../../../components/Text";
+import Button from "../../components/Button";
+import Text from "../../components/Text";
 function OverContainer({ onGameRestart = () => {} }) {
   return (
     <div className="text-center">

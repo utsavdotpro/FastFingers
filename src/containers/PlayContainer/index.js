@@ -1,10 +1,10 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Input from "../../../../components/Input";
-import Timer from "../../../../components/Timer";
-import Word from "../../../../components/Word";
-import { useDictionary } from "../../hooks";
+import Input from "../../components/Input";
+import Timer from "../../components/Timer";
+import Word from "../../components/Word";
+import { useDictionary } from "./../../pages/Game/hooks";
 
-import { getTimeForWord } from "./../../../../utils/methods";
+import { getTimeForWord } from "./../../utils/methods";
 
 const ACTIONS = {
   UPDATE_WORD: "UPDATE_WORD",
