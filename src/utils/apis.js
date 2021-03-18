@@ -1,8 +1,10 @@
 import Axios from "axios";
 
-const SERVER_URL = "http://localhost:3000/apis/";
+const SERVER_URL = process.env.REACT_APP_API_URL;
 
 function sendRequest(url, request, headers = {}) {
+  console.log(process.env);
+
   return Axios.post(url, request, { headers });
 }
 
